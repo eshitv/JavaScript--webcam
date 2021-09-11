@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="app.css" rel="stylesheet">
+    <title>Scanner</title>
+</head>
+
+<body>
+    <h1>Electricity Bill</h1>
+    <div class="container">
+        <div class="box">
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4">
+                </div>
+                <div class="col-md-6">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="fullname" class="form-control" id="fullname">
+                </div>
+                <div class="col-12">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="address" class="form-control" id="address">
+                </div>
+                <div class="col-md-6">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date">
+                </div>
+                <div class="col-md-4">
+                    <label for="area" class="form-label">Area</label>
+                    <select id="area" class="form-select">
+            <option selected>Choose...</option>
+            <option>Dwarka</option>
+             <option>Dwarka Sector 1</option>
+             <option>Dwarka Sector 2</option>
+             <option>Dwarka Sector 3</option>
+             <option>Dwarka Sector 4</option>
+             <option>Dwarka Sector 5</option>
+             <option>Dwarka Sector 6</option>
+             <option>Dwarka Sector 7</option>
+             <option>Dwarka Sector 8</option>
+             <option>Dwarka Sector 9</option>
+             <option>Dwarka Sector 10</option>
+             <option>Dwarka Sector 11</option>
+             <option>Dwarka Sector 12</option>
+             <option>Dwarka Sector 13</option>
+             <option>Dwarka Sector 14</option>
+             <option>Dwarka Sector 15</option>
+             <option>Dwarka Sector 16</option>
+             <option>Dwarka Sector 17</option>
+             <option>Dwarka Sector 18</option>
+             <option>Dwarka Sector 19</option>
+             <option>Dwarka Sector 20</option>
+             <option>Dwarka Sector 21</option>
+             <option>Dwarka Sector 22</option>
+             <option>Dwarka Sector 23</option>
+
+        </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                </div>
+        </div>
+        <br>
+        <div id="camera"></div>
+
+        <button onclick="take_snapshot()"> Take Snapshot</button>
+        <div id="results"></div>
+        </form>
+
+    </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+    <script>
+        Webcam.set({
+            width: 350,
+            height: 350,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+
+        });
+
+        Webcam.attach("#camera");
+        //preload the shutter audio clip
+        var shutter = new Audio();
+        shutter.autoplay = true;
+        shutter.src = navigator.userAgent.match(/ Google Chrome/) ? 'shutter.ogg' : 'shutter.mp3';
+
+        function take_snapshot() {
+
+            shutter.play();
+
+
+            Webcam.snap(function(data_uri) {
+                //display results in page
+                document.getElementById('results').innerHTML =
+                    '<img src="' + data_uri + '"/>';
+
+
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>
